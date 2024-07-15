@@ -47,6 +47,11 @@ public class HouseService {
         return newHouse;
     }
 
+    /**
+     * @description 根据输入的id查找id对应的房屋并删除
+     * @param delId
+     * @return
+     */
     public boolean del(int delId) {
         int index = -1;
         for (int i = 0; i < houses.length; i++) {
@@ -54,8 +59,8 @@ public class HouseService {
                 index = i;
             }
         }
-        if (index != -1) {
-            return false;
+        if (index == -1) {
+            return false;//没找到则返回
         }
         for (int i = 0; i < houses.length; i++) {
             if (houses[i].getHouseID() == delId) {
@@ -68,6 +73,12 @@ public class HouseService {
         return true;
     }
 
+    /**
+     * @description 根据输入的房屋对象进行删除
+     * @param oldHouse
+     * @param house
+     * @return
+     */
     public House[] delHouse(House[] oldHouse, House house) {
         House[] newHouse = new House[oldHouse.length - 1];
         for (int i = 0, j = 0; i < oldHouse.length; i++,j++) {
@@ -78,6 +89,10 @@ public class HouseService {
             newHouse[i] = oldHouse[j];
         }
         return newHouse;
+    }
+
+    public House[] list(){
+        return houses;
     }
 
 
